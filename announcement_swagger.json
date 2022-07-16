@@ -265,78 +265,13 @@
           "type": "string",
           "enum": [
             "WSS",
-            "Mobile",
-            "UI"
-          ]
-        },
-        "name": {
-          "type": "string"
-        },
-        "start_date": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "end_date": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "request"
-      }
-    },
+   
     "announcement_today": {
-      "title": "announcement_today",
-      "type": "object",
-      "required": [
-        "name",
-        "datatext",
-        "service_type",
-        "start_date",
-        "end_date",
-        "type"
-      ],
-      "properties": {
-        "id": {
+
           "type": "integer"
         },
         "datatext": {
-          "type": "string"
-        },
-        "service_type": {
-          "type": "string",
-          "enum": [
-            "WSS",
-            "Mobile",
-            "UI"
-          ]
-        },
-        "name": {
-          "type": "string"
-        },
-        "start_date": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "end_date": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "xml": {
-        "name": "announcement_today"
-      }
-    },
-    "temp_payload": {
-      "title": "temp_payload",
-      "type": "object",
-      "required": [
+          
         "name"
       ],
       "properties": {
