@@ -1,0 +1,352 @@
+{
+  "swagger": "2.0",
+  "x-navigateMethodsByName": true,
+  "x-sortMethodsBy": [
+    "path",
+    "operation"
+  ],
+  "info": {
+    "description": "Breif Documentation of Announcement APIs",
+    "version": "1.0.0",
+    "title": "Announcement APIs",
+    "x-logo": {
+      "url": "https://www.nyalazone.com/img/logo.png",
+      "altText": "Petstore logo"
+    }
+  },
+  "host": "localhost:5011",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/wss/announcement/data/get_all": {
+      "post": {
+        "tags": [
+          "announcement"
+        ],
+        "summary": "Get all annoucements",
+        "description": "Returns all the announcements from the database.",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/announcement_schema"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/mobile/announcements/get_all/today": {
+      "post": {
+        "tags": [
+          "announcement"
+        ],
+        "summary": "Today's announcements",
+        "description": "Returns all the announcements to be fired today.",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/announcement_schema"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          },
+          {
+            "Version": []
+          }
+        ]
+      }
+    },
+    "/wss/announcement/create": {
+      "post": {
+        "tags": [
+          "announcement"
+        ],
+        "summary": "Create an anouncement",
+        "description": "Creates a new announcement",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Parameters required.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/announcement_schema"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    },
+    "/wss/announcement/update": {
+      "post": {
+        "tags": [
+          "announcement"
+        ],
+        "summary": "Update an announcement",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Parameters required.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/announcement_today"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/announcement_schema"
+            }
+          },
+          "400": {
+            "description": "BAD REQUEST"
+          }
+        },
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    },
+    "Version": {
+      "type":"apiKey",
+      "name": "Version",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "Authorization": []
+    },
+    {
+      "Version": []
+    }
+  ],
+  "definitions": {
+    "announcement_schema": {
+      "title": "announcement_schema",
+      "type": "object",
+      "properties": {
+        "errCode": {
+          "type": "integer",
+          "description": "0 - success , 1 - error"
+        },
+        "msg": {
+          "type": "string",
+          "description": "Response message"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "create_datetime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "lastchange_datetime": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "start_date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "end_date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "datatext": {
+              "type": "string",
+              "description": "Announcement details"
+            },
+            "type": {
+              "type": "string"
+            },
+            "service_type": {
+              "type": "string",
+              "description": "wss / mobile / ui",
+              "enum": [
+                "WSS",
+                "Mobile",
+                "UI"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "description": "Anouncement's name"
+            }
+          }
+        }
+      },
+      "xml": {
+        "name": "announcement_schema"
+      }
+    },
+    "request": {
+      "title": "announcement_request",
+      "type": "object",
+      "required": [
+        "name",
+        "datatext",
+        "service_type",
+        "start_date",
+        "end_date",
+        "type"
+      ],
+      "properties": {
+        "datatext": {
+          "type": "string"
+        },
+        "service_type": {
+          "type": "string",
+          "enum": [
+            "WSS",
+            "Mobile",
+            "UI"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "request"
+      }
+    },
+    "announcement_today": {
+      "title": "announcement_today",
+      "type": "object",
+      "required": [
+        "name",
+        "datatext",
+        "service_type",
+        "start_date",
+        "end_date",
+        "type"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "datatext": {
+          "type": "string"
+        },
+        "service_type": {
+          "type": "string",
+          "enum": [
+            "WSS",
+            "Mobile",
+            "UI"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "announcement_today"
+      }
+    },
+    "temp_payload": {
+      "title": "temp_payload",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "datatext": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "temp_payload"
+      }
+    }
+  }
+}
