@@ -1,0 +1,7 @@
+title: temp_payload
+type: object
+properties:
+  datatext:
+    type: string
+xml:
+  name: temp_payload

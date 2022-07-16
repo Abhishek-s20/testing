@@ -1,0 +1,49 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "API documentation",
+      "description": "This is a sample documentation server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).",
+      "termsOfService": "http://swagger.io/terms/",
+      "contact": {
+        "email": "apiteam@swagger.io"
+      },
+      "x-logo": {
+        "url": "https://www.nyalazone.com/img/logo.png",
+        "altText": "logo"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+      "version": "1.0.0"
+    },
+    "externalDocs": {
+      "description": "Find out more about Swagger",
+      "url": "http://swagger.io"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:5011/",
+        "description": ""
+      }
+    ],
+    "tags": [
+      {
+        "name": "Announcement",
+        "description": "announcement apis"
+      }
+    ],
+    "x-tagGroups": [
+      {
+        "name": "nyalazone",
+        "tags": ["Announcement"]
+        
+      }
+    ],
+    "$ref": "./path.json", 
+    "x-navigateMethodsByName": true,
+    "x-sortMethodsBy": [
+      "method",
+      "navigation"
+    ]
+  }

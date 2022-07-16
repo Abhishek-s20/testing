@@ -1,0 +1,31 @@
+post:
+  tags:
+    - Announcement
+  summary: Today's announcements
+  description: Returns all the announcements to be fired today.
+  parameters:
+      - in: header
+        name: Authorization
+        required: true
+        schema:
+          type: apikey
+        description: Bearer token
+      - in: header
+        name: Version
+        required: true
+        schema:
+          type: integer
+        description: Mobile app version
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/announcement_schema.yaml
+        application/xml:
+          schema:
+            $ref: ../components/schemas/announcement_schema.yaml
+    '400':
+      description: BAD REQUEST
+      content: {}

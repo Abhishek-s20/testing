@@ -1,0 +1,22 @@
+post:
+  tags:
+    - Announcement
+  summary: Get all annoucements
+  description: Returns all the announcements from the database.
+  parameters:
+      - in: header
+        name: Authorization
+        required: true
+        schema:
+          type: apikey
+        description: Bearer Token
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/announcement_schema.yaml
+    '400':
+      description: BAD REQUEST
+      content: {}

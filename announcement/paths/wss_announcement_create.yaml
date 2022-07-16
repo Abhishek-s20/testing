@@ -1,0 +1,30 @@
+post:
+  tags:
+    - Announcement
+  summary: Create an anouncement
+  description: Creates a new announcement
+  parameters:
+      - in: header
+        name: Authorization
+        required: true
+        schema:
+          type: apikey
+        description: Bearer Token
+  requestBody:
+    description: Parameters required.
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/request.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/announcement_schema.yaml
+    '400':
+      description: BAD REQUEST
+      content: {}
+  x-codegen-request-body-name: body

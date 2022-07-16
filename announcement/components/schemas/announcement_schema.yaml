@@ -1,0 +1,44 @@
+title: announcement_schema
+type: object
+properties:
+  errCode:
+    type: integer
+    description: 0 - success , 1 - error
+  msg:
+    type: string
+    description: Response message
+  data:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      create_datetime:
+        type: string
+        format: date-time
+      lastchange_datetime:
+        type: string
+        format: date-time
+      start_date:
+        type: string
+        format: date-time
+      end_date:
+        type: string
+        format: date-time
+      datatext:
+        type: string
+        description: Announcement details
+      type:
+        type: string
+      service_type:
+        type: string
+        description: wss / mobile / ui
+        enum:
+          - WSS
+          - Mobile
+          - UI
+      name:
+        type: string
+        description: Anouncement's name
+xml:
+  name: announcement_schema

@@ -1,0 +1,16 @@
+{
+"paths": {
+  "/wss/announcement/data/get_all": {
+    "$ref": "./announcement/paths/wss_announcement_data_get_all.yaml"
+  },
+  "/mobile/announcements/get_all/today": {
+    "$ref": "./announcement/paths/mobile_announcements_get_all_today.yaml"
+  },
+  "/wss/announcement/create": {
+    "$ref": "./announcement/paths/wss_announcement_create.yaml"
+  },
+  "/wss/announcement/update": {
+    "$ref": "./announcement/paths/wss_announcement_update.yaml"
+  }
+}
+}

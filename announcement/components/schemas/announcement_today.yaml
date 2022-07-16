@@ -1,0 +1,32 @@
+title: announcement_today
+required:
+  - datatext
+  - end_date
+  - name
+  - service_type
+  - start_date
+  - type
+type: object
+properties:
+  id:
+    type: integer
+  datatext:
+    type: string
+  service_type:
+    type: string
+    enum:
+      - WSS
+      - Mobile
+      - UI
+  name:
+    type: string
+  start_date:
+    type: string
+    format: date-time
+  end_date:
+    type: string
+    format: date-time
+  type:
+    type: string
+xml:
+  name: announcement_today
